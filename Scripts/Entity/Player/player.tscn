@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn48nvlgy3yap"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Player/player.gd" id="1_uu8hw"]
+[ext_resource type="PackedScene" uid="uid://bagjyujscjhub" path="res://Scripts/Guns/TestGun1/test_gun_1.tscn" id="2_p0brh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i4ekw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ex45u"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_uu8hw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_i4ekw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ex45u")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1.86621, 0.719212, 0, -0.719212, 1.86621, 0, 1.98397, 1.79384)
+current = true
+fov = 97.179
+
+[node name="TestGun1" parent="." instance=ExtResource("2_p0brh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645419, 0, 0)
