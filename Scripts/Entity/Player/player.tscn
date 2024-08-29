@@ -7,8 +7,12 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ex45u"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="RigidBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+max_contacts_reported = 1
 script = ExtResource("1_uu8hw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -23,4 +27,4 @@ current = true
 fov = 97.179
 
 [node name="TestGun1" parent="." instance=ExtResource("2_p0brh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645419, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839453, 0, 0)

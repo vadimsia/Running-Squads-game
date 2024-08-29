@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxl0xtwjna70a"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Road/road.gd" id="1_xkvpi"]
+[ext_resource type="PackedScene" uid="uid://c1qgx3q6dfwog" path="res://Scripts/Entity/Wall/wall.tscn" id="2_21kfa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ll1j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0als"]
+size = Vector3(10, 1, 50)
+
+[node name="Road" type="StaticBody3D"]
+script = ExtResource("1_xkvpi")
+road_assets = Array[PackedScene]([ExtResource("2_21kfa")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("BoxMesh_3ll1j")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_r0als")
+
+[node name="Obstructions" type="Node3D" parent="."]

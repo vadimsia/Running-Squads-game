@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1qgx3q6dfwog"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Wall/wall.gd" id="1_a0f4u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1vs5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sry61"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_lqj8g"]
+subpixel_positioning = 0
+
+[node name="Wall" type="RigidBody3D"]
+contact_monitor = true
+max_contacts_reported = 1000
+script = ExtResource("1_a0f4u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_i1vs5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_sry61")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+text = "5"
+font = SubResource("SystemFont_lqj8g")
+font_size = 512

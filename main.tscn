@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cefa5ccjeceed"]
+[gd_scene load_steps=8 format=3 uid="uid://cefa5ccjeceed"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_jjg4r"]
 [ext_resource type="PackedScene" uid="uid://bn48nvlgy3yap" path="res://Scripts/Entity/Player/player.tscn" id="1_wms6c"]
-[ext_resource type="PackedScene" uid="uid://cxl0xtwjna70a" path="res://Scripts/Level/road.tscn" id="2_wubep"]
+[ext_resource type="PackedScene" uid="uid://cxl0xtwjna70a" path="res://Scripts/Level/Road/road.tscn" id="2_wubep"]
+[ext_resource type="Script" path="res://Scripts/Guns/bullet_pool.gd" id="4_rblaf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k7qao"]
 
@@ -28,3 +29,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
 [node name="Roads" type="Node3D" parent="."]
 
 [node name="Road" parent="Roads" instance=ExtResource("2_wubep")]
+
+[node name="BulletPool" type="Node3D" parent="."]
+script = ExtResource("4_rblaf")
