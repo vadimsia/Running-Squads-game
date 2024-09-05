@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://kvivl1yy86dk"]
+
+[ext_resource type="PackedScene" uid="uid://cmf86hihrxlcl" path="res://Scripts/Ammo/Bullets/BLT-45ACPfbx.fbx" id="1_qpcqc"]
+
+[node name="BLT-45ACPfbx" instance=ExtResource("1_qpcqc")]
+
+[node name="Cylinder_001" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, -3, 4.52987e-07, 0, -4.52987e-07, -3, 0, 0, 0)

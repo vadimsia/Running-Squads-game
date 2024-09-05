@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxreo7a0cpx7s"]
+
+[ext_resource type="PackedScene" uid="uid://j2nqwc48e4mb" path="res://Scripts/Guns/SMG/TommyGun.fbx" id="1_vonk1"]
+
+[node name="TommyGun" instance=ExtResource("1_vonk1")]
+
+[node name="PPSH40" parent="." index="0"]
+transform = Transform3D(1.50996e-06, -26, -8.74228e-07, 0, -1.1365e-06, 20, -20, -1.96295e-06, -6.60024e-14, 0, 0, 0)

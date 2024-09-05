@@ -1,30 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn48nvlgy3yap"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/Player/player.gd" id="1_uu8hw"]
-[ext_resource type="PackedScene" uid="uid://bagjyujscjhub" path="res://Scripts/Guns/TestGun1/test_gun_1.tscn" id="2_p0brh"]
+[ext_resource type="PackedScene" uid="uid://bawetmoigve4a" path="res://Scripts/Entity/Player/Player1/player_1.tscn" id="3_qgjmo"]
+[ext_resource type="PackedScene" uid="uid://vy5sy17mt0wr" path="res://Scripts/Guns/SMG/TommyGun.tscn" id="3_vju6g"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_i4ekw"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ex45u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmcre"]
+size = Vector3(1.72, 2, 1.1)
 
 [node name="Player" type="RigidBody3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-max_contacts_reported = 1
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_uu8hw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_i4ekw")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_ex45u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27323, 0, 0)
+shape = SubResource("BoxShape3D_qmcre")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 1.86621, 0.719212, 0, -0.719212, 1.86621, 0, 1.98397, 1.79384)
-current = true
-fov = 97.179
+[node name="Model" parent="." instance=ExtResource("3_qgjmo")]
 
-[node name="TestGun1" parent="." instance=ExtResource("2_p0brh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839453, 0, 0)
+[node name="TommyGun" parent="." instance=ExtResource("3_vju6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0698774, 0.343531, -0.388898)

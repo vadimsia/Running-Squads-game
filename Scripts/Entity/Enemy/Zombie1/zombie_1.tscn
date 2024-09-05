@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05qdc8kfvcyv"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Enemy/enemy.gd" id="1_bg6bk"]
+[ext_resource type="PackedScene" uid="uid://bbvebfb3e31ib" path="res://Scripts/Entity/Enemy/Zombie1/zombie_1_model.tscn" id="2_kjl71"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxrb8"]
+radius = 0.7
+
+[node name="Zombie1" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 15
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_bg6bk")
+health = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oxrb8")
+
+[node name="Model" parent="." instance=ExtResource("2_kjl71")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.916814, -0.0379829)

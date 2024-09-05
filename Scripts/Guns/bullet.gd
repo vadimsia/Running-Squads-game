@@ -11,7 +11,3 @@ func _ready() -> void:
     axis_lock_angular_x = true
     axis_lock_angular_y = true
     axis_lock_angular_z = true
-
-
-func _physics_process(delta: float) -> void:
-    move_and_collide(linear_velocity * delta)

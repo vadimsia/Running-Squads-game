@@ -5,10 +5,12 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_untxo"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r7jsk"]
-height = 0.21
+height = 0.2
 radius = 0.051
 
 [node name="TestBullet1" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 5
 mass = 0.01
 gravity_scale = 0.0
 max_contacts_reported = 1

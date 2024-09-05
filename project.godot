@@ -15,6 +15,15 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[physics]
+[editor]
 
-3d/physics_engine="GodotPhysics3D"
+movie_writer/movie_file="/Users/ynggstr/Контент/проекты/GodotGame1/gameplay.avi"
+movie_writer/fps=30
+
+[layer_names]
+
+3d_physics/layer_1="walls"
+3d_physics/layer_2="player"
+3d_physics/layer_3="enemy"
+3d_physics/layer_4="bullet"
+3d_physics/layer_5="gun"

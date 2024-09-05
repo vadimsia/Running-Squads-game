@@ -21,7 +21,7 @@ func _ready() -> void:
 	spawn_roads(5)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var first_child = roads_node.get_child(0)
 	if first_child.position.z > Road.ROAD_SIZE * 2:
 		first_child.queue_free()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgm57200r7rvi"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/EnemySquad/enemy_squad.gd" id="1_4jpga"]
+[ext_resource type="PackedScene" uid="uid://b05qdc8kfvcyv" path="res://Scripts/Entity/Enemy/Zombie1/zombie_1.tscn" id="2_xb58w"]
+
+[node name="EnemySquad" type="Node3D"]
+script = ExtResource("1_4jpga")
+min_squad = 2
+max_squad = 7
+enemy_assets = Array[PackedScene]([ExtResource("2_xb58w")])

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwd1658l7updc"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/Multiplier/multiplier.gd" id="1_gmwmq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajvtu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x32v2"]
+resource_local_to_scene = true
+transparency = 1
+
+[sub_resource type="SystemFont" id="SystemFont_p2suq"]
+subpixel_positioning = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5hv7q"]
+size = Vector3(5, 5, 1)
+
+[node name="Multiplier" type="RigidBody3D"]
+collision_mask = 14
+contact_monitor = true
+max_contacts_reported = 50
+script = ExtResource("1_gmwmq")
+health_range = 160
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_ajvtu")
+surface_material_override/0 = SubResource("StandardMaterial3D_x32v2")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+text = "5"
+font = SubResource("SystemFont_p2suq")
+font_size = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5hv7q")

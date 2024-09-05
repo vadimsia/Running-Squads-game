@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0jqx3vgwg2bd"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/PlayerSquad/player_squad.gd" id="1_1hu1s"]
+[ext_resource type="PackedScene" uid="uid://bn48nvlgy3yap" path="res://Scripts/Entity/Player/player.tscn" id="2_7y26r"]
+
+[node name="PlayerSquad" type="Node3D"]
+script = ExtResource("1_1hu1s")
+player_assets = Array[PackedScene]([ExtResource("2_7y26r")])
+current_player_asset = ExtResource("2_7y26r")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.90661, 0.42197, 0, -0.42197, 0.90661, 0, 2.97475, 4.72752)
+current = true
+fov = 100.0
+
+[node name="Bodies" type="Node3D" parent="."]
+
+[node name="Player" parent="Bodies" instance=ExtResource("2_7y26r")]
