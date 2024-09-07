@@ -12,6 +12,7 @@ collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_vvu5m")
 bullet_scene = ExtResource("2_fiyja")
+initial_rotation = Vector3(90, -180, 0)
 
 [node name="TommyGun" parent="." instance=ExtResource("1_d8u3e")]
 

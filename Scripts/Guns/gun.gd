@@ -1,10 +1,11 @@
-class_name Gun extends Node
+class_name Gun extends Node3D
 
 @onready var barrel: Node3D = $Barrel
 @onready var shoot_timer: Timer = $ShootTimer
 
 @export var bullet_scene: PackedScene
 @export var spread: float = 0.1
+@export var initial_rotation: Vector3
 
 var bullet_pool: BulletPool
 
@@ -16,6 +17,11 @@ func _ready() -> void:
 
 func spread_rand() -> float:
 	return randf_range(-spread, spread)
+
+
+func stop_shooting() -> void:
+	shoot_timer.stop()
+
 
 func _on_shoot_timeout() -> void:
 	var bullet: Bullet = bullet_scene.instantiate() 

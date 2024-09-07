@@ -27,7 +27,7 @@ func remove_players(amount: int) -> void:
 		if not player:
 			return
 		
-		player.queue_free()
+		player.take_damage(player.health)
 
 
 func _process(delta: float) -> void:

@@ -14,7 +14,6 @@ collision_mask = 5
 mass = 0.01
 gravity_scale = 0.0
 max_contacts_reported = 1
-linear_velocity = Vector3(0, 0, -10)
 script = ExtResource("1_374xf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

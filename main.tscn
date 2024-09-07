@@ -13,6 +13,11 @@ sky_material = SubResource("ProceduralSkyMaterial_k7qao")
 [sub_resource type="Environment" id="Environment_7m8mv"]
 background_mode = 2
 sky = SubResource("Sky_gr10j")
+fog_light_energy = 0.59
+volumetric_fog_density = 0.0436
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_anisotropy = -0.69
+volumetric_fog_length = 70.0
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jjg4r")
@@ -22,6 +27,7 @@ environment = SubResource("Environment_7m8mv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.317273, 0.948334, 0, -0.948334, 0.317273, 0.378987, 8.16592, -0.160277)
+shadow_enabled = true
 
 [node name="Roads" type="Node3D" parent="."]
 
@@ -31,4 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 0.317273, 0.948334, 0, -0.948334, 0.317273, 
 script = ExtResource("4_rblaf")
 
 [node name="PlayerSquad" parent="." instance=ExtResource("4_v2vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19582, 0)

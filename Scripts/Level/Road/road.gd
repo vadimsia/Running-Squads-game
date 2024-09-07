@@ -15,7 +15,7 @@ func _ready() -> void:
 	for i in range(0, obstructions):
 		var asset: Node3D = road_assets[randi() % road_assets.size()].instantiate()
 		obstructions_node.add_child(asset)
-		asset.global_position = Vector3(global_position.x + randf_range(-5, 5), 3, global_position.z - obstruction_interval)
+		asset.global_position = Vector3(global_position.x + randf_range(-5, 5), 1.2, global_position.z - obstruction_interval)
 		
 
 

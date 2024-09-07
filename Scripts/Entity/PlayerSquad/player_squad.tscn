@@ -11,8 +11,9 @@ current_player_asset = ExtResource("2_7y26r")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.90661, 0.42197, 0, -0.42197, 0.90661, 0, 2.97475, 4.72752)
 current = true
-fov = 100.0
+fov = 65.0
 
 [node name="Bodies" type="Node3D" parent="."]
 
 [node name="Player" parent="Bodies" instance=ExtResource("2_7y26r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.966964, 0)

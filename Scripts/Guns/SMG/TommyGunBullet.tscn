@@ -11,8 +11,8 @@ radius = 0.0316192
 collision_layer = 8
 collision_mask = 5
 mass = 0.01
-linear_velocity = Vector3(0, 0, -20)
 script = ExtResource("1_yy327")
+speed = 40
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
