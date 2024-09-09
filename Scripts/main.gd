@@ -14,7 +14,6 @@ func spawn_roads(amount: int) -> void:
 			continue
 		
 		children[-1].position.z = children[-2].position.z - Road.ROAD_SIZE
-		
 
 
 func _ready() -> void:

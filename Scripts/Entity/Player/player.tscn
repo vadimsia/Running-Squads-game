@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bawetmoigve4a" path="res://Scripts/Entity/Player/Player1/player_1.tscn" id="3_qgjmo"]
 [ext_resource type="PackedScene" uid="uid://vy5sy17mt0wr" path="res://Scripts/Guns/SMG/TommyGun.tscn" id="3_vju6g"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qmcre"]
-size = Vector3(0.804023, 1.51, 1.28242)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8y16j"]
+radius = 0.419271
+height = 1.49897
 
 [node name="Player" type="RigidBody3D"]
 collision_layer = 2
@@ -13,6 +14,7 @@ collision_mask = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 5.0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_uu8hw")
@@ -20,6 +22,6 @@ initial_gun = ExtResource("3_vju6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117312, 0.0508171, -0.0912109)
-shape = SubResource("BoxShape3D_qmcre")
+shape = SubResource("CapsuleShape3D_8y16j")
 
 [node name="Model" parent="." instance=ExtResource("3_qgjmo")]

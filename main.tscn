@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cefa5ccjeceed"]
+[gd_scene load_steps=10 format=3 uid="uid://cefa5ccjeceed"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_jjg4r"]
 [ext_resource type="PackedScene" uid="uid://cxl0xtwjna70a" path="res://Scripts/Level/Road/road.tscn" id="2_wubep"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/player_squad.gd" id="4_1wa3s"]
 [ext_resource type="Script" path="res://Scripts/Guns/bullet_pool.gd" id="4_rblaf"]
-[ext_resource type="PackedScene" uid="uid://b0jqx3vgwg2bd" path="res://Scripts/Entity/PlayerSquad/player_squad.tscn" id="4_v2vf4"]
+[ext_resource type="PackedScene" uid="uid://bn48nvlgy3yap" path="res://Scripts/Entity/Player/player.tscn" id="5_4al7x"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="6_3rgp7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k7qao"]
 
@@ -36,5 +38,16 @@ shadow_enabled = true
 [node name="BulletPool" type="Node3D" parent="."]
 script = ExtResource("4_rblaf")
 
-[node name="PlayerSquad" parent="." instance=ExtResource("4_v2vf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19582, 0)
+[node name="PlayerPool" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91472, 0)
+script = ExtResource("4_1wa3s")
+current_player_asset = ExtResource("5_4al7x")
+
+[node name="Player" parent="PlayerPool" instance=ExtResource("5_4al7x")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.950667, 0.310212, 0, -0.310212, 0.950667, 0, 3.5, 3.297)
+current = true
+script = ExtResource("6_3rgp7")
+
+[node name="ObstructionsPool" type="Node3D" parent="."]

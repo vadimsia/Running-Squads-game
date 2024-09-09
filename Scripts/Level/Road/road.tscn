@@ -21,5 +21,3 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_r0als")
-
-[node name="Obstructions" type="Node3D" parent="."]

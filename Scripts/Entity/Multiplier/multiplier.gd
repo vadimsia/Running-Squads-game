@@ -2,8 +2,7 @@ class_name Multiplier extends Entity
 
 @onready var health_label: Label3D = $HealthLabel
 @onready var mesh: MeshInstance3D = $MeshInstance3D
-@onready var player_squad: PlayerSquad = get_node("/root/Main/PlayerSquad")
-@onready var player_pool: Node3D = get_node("/root/Main/PlayerSquad/Bodies")
+@onready var player_squad: PlayerSquad = get_node("/root/Main/PlayerPool")
 
 @export var health_range = 40
 

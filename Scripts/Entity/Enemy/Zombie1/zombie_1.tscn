@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bbvebfb3e31ib" path="res://Scripts/Entity/Enemy/Zombie1/zombie_1_model.tscn" id="2_kjl71"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oxrb8"]
-radius = 0.7
+radius = 0.563003
+height = 2.05259
 
 [node name="Zombie1" type="RigidBody3D"]
 collision_layer = 4

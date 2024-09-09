@@ -1,8 +1,8 @@
 class_name Player extends Entity
 
 const PATH_LEN = 1
-const SPEED = 10
 
+var SPEED = 5
 var gun_attachment: Node3D
 
 @onready var player_pool: Node3D = get_parent()
@@ -45,16 +45,21 @@ func _on_player_body_entered(body: Node) -> void:
 func _on_health_changed(_old_value: int, new_value: int) -> void:
 	if new_value <= 0:
 		anim_tree.set("parameters/conditions/death", true)
-		collision_shape.set_deferred("disabled", true)
 		get_actual_gun().stop_shooting()
+		SPEED = 0
+		
 		# queue_free()
-
+		
 
 func _physics_process(delta: float) -> void:
-	var direction = (player_pool.global_position - global_position)
-	if direction.length() < PATH_LEN:
-		return
-
-
-	direction = direction.normalized()
-	# move_and_collide(direction * SPEED * delta)
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	
+	if not direction:
+		var first_player = player_pool.get_child(0)
+		direction = (first_player.global_position - global_position)
+		if direction.length() < PATH_LEN:
+			direction = Vector3.ZERO
+				
+	linear_velocity += direction.normalized() * SPEED * 3 * delta * Vector3(1, 0, 1)
+	linear_velocity.z = -SPEED

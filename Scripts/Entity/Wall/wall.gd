@@ -16,6 +16,7 @@ func _on_wall_body_entered(body: Node) -> void:
 	
 	body.take_damage(body.health)
 
+
 func _on_health_changed(_old_value: int, new_value: int) -> void:
 	if new_value <= 0:
 		queue_free()
