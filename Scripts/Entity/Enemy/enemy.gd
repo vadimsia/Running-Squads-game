@@ -9,20 +9,42 @@ class_name Enemy extends Entity
 
 func _ready() -> void:
 	health_changed.connect(_on_enemy_health_changed)
+	body_entered.connect(_on_player_body_entered)
 	super._ready()
 
 	axis_lock_linear_z = true
 
 
+func _on_player_body_entered(body: Node) -> void:
+	if body is not Player:
+		return
+	
+	body.take_damage(damage)
+
+
 func _on_enemy_health_changed(_old_value: int, new_value: int) -> void:
 	if new_value <= 0:
 		anim_tree.set("parameters/conditions/death", true)
-		# queue_free()
+		set_collision_mask_value(2, false)
+		set_collision_mask_value(3, false)
+		set_collision_mask_value(4, false)
+		set_collision_layer_value(3, false)
 
 
 func _physics_process(delta: float) -> void:
+	anim_tree.set("parameters/conditions/punch", false)
+
 	if health <= 0:
 		return
 
-	var direction = (player_squad.global_position - global_position).normalized()
-	#linear_velocity += direction * speed * delta
+	var first_player = player_squad.get_alive_player()
+	if not first_player:
+		return
+	
+	var direction = (first_player.global_position - global_position)
+	if direction.length() > 5:
+		return
+
+	anim_tree.set("parameters/conditions/punch", true)
+	linear_velocity += direction.normalized() * speed * delta
+	look_at(global_position - direction, Vector3.UP)

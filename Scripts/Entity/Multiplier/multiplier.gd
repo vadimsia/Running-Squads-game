@@ -8,7 +8,12 @@ class_name Multiplier extends Entity
 
 
 func get_multiplier() -> int:
-	return -health / player_squad.current_player_asset.instantiate().health
+	var first_player = player_squad.get_alive_player()
+	if not first_player:
+		return 0
+	
+
+	return -health / (first_player.health * player_squad.get_child_count())
 
 
 func _ready() -> void:
@@ -16,6 +21,7 @@ func _ready() -> void:
 	health_changed.connect(_on_health_changed)
 	body_entered.connect(_on_multiplier_body_entered)
 	super._ready()
+	health_label.text = "?"
 
 
 func _on_multiplier_body_entered(body: Node) -> void:

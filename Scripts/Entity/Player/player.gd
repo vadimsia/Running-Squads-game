@@ -1,16 +1,16 @@
 class_name Player extends Entity
 
-const PATH_LEN = 1
+const PATH_LEN = 3
 
-var SPEED = 5
 var gun_attachment: Node3D
 
-@onready var player_pool: Node3D = get_parent()
+@onready var player_pool: PlayerSquad = get_parent()
 @onready var anim_tree: AnimationTree = get_node("Model/AnimationTree")
 @onready var model: Node3D = get_node("Model")
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
 @export var initial_gun: PackedScene
+@export var speed = 10
 
 
 func change_gun(gun_scene: PackedScene):
@@ -29,24 +29,20 @@ func get_actual_gun() -> Gun:
 func _ready() -> void:
 	super._ready()
 	health_changed.connect(_on_health_changed)
-	body_entered.connect(_on_player_body_entered)
 	gun_attachment = model.find_child("GunAttachment")
 	change_gun(initial_gun)
-
-
-func _on_player_body_entered(body: Node) -> void:
-	if body is not Enemy:
-		return
-
-	take_damage(body.damage)
-	# body.queue_free()
 
 
 func _on_health_changed(_old_value: int, new_value: int) -> void:
 	if new_value <= 0:
 		anim_tree.set("parameters/conditions/death", true)
+		set_collision_mask_value(2, false)
+		set_collision_mask_value(3, false)
+		set_collision_mask_value(6, false)
+		set_collision_layer_value(2, false)
+
 		get_actual_gun().stop_shooting()
-		SPEED = 0
+		speed = 0
 		
 		# queue_free()
 		
@@ -54,12 +50,14 @@ func _on_health_changed(_old_value: int, new_value: int) -> void:
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+	var first_player = player_pool.get_alive_player()
+	if not first_player:
+		return
 	
 	if not direction:
-		var first_player = player_pool.get_child(0)
 		direction = (first_player.global_position - global_position)
 		if direction.length() < PATH_LEN:
 			direction = Vector3.ZERO
 				
-	linear_velocity += direction.normalized() * SPEED * 3 * delta * Vector3(1, 0, 1)
-	linear_velocity.z = -SPEED
+	linear_velocity += direction.normalized() * speed * 2 * delta * Vector3(1, 0, 1)
+	linear_velocity.z = -speed

@@ -1,24 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://vy5sy17mt0wr"]
+[gd_scene load_steps=4 format=3 uid="uid://vy5sy17mt0wr"]
 
 [ext_resource type="PackedScene" uid="uid://cxreo7a0cpx7s" path="res://Scripts/Guns/SMG/tommy_gun_model.tscn" id="1_d8u3e"]
 [ext_resource type="Script" path="res://Scripts/Guns/gun.gd" id="1_vvu5m"]
 [ext_resource type="PackedScene" uid="uid://qbt0egics3l6" path="res://Scripts/Guns/SMG/TommyGunBullet.tscn" id="2_fiyja"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ek3d4"]
-size = Vector3(0.2, 0.25, 1)
-
-[node name="TommyGun" type="StaticBody3D"]
-collision_layer = 16
-collision_mask = 2
+[node name="TommyGun" type="Node3D"]
 script = ExtResource("1_vvu5m")
 bullet_scene = ExtResource("2_fiyja")
 initial_rotation = Vector3(90, -180, 0)
 
 [node name="TommyGun" parent="." instance=ExtResource("1_d8u3e")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00894165, 0.0786591, -0.33934)
-shape = SubResource("BoxShape3D_ek3d4")
 
 [node name="Barrel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0896285, -0.80158)
