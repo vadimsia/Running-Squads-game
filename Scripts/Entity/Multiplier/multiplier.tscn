@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwd1658l7updc"]
+[gd_scene load_steps=7 format=3 uid="uid://bwd1658l7updc"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/Multiplier/multiplier.gd" id="1_gmwmq"]
+[ext_resource type="PackedScene" uid="uid://24ojhmfop03l" path="res://VFX/Explosion/WallHit.tscn" id="2_6ualh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ajvtu"]
 
@@ -25,6 +26,7 @@ contact_monitor = true
 max_contacts_reported = 50
 script = ExtResource("1_gmwmq")
 health_range = 160
+hit_effect = ExtResource("2_6ualh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)

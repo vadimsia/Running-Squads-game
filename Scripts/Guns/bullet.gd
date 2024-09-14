@@ -14,3 +14,4 @@ func _ready() -> void:
 	axis_lock_angular_z = true
 
 	linear_velocity.z = -speed
+

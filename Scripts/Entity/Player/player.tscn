@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn48nvlgy3yap"]
+[gd_scene load_steps=6 format=3 uid="uid://bn48nvlgy3yap"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/Player/player.gd" id="1_uu8hw"]
 [ext_resource type="PackedScene" uid="uid://bawetmoigve4a" path="res://Scripts/Entity/Player/Player1/player_1.tscn" id="3_qgjmo"]
 [ext_resource type="PackedScene" uid="uid://vy5sy17mt0wr" path="res://Scripts/Guns/SMG/TommyGun.tscn" id="3_vju6g"]
+[ext_resource type="AudioStream" uid="uid://wwivbhobcec8" path="res://Scripts/Entity/Player/Player1/Player1DieSound.wav" id="4_exrcm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8y16j"]
 radius = 0.419271
@@ -25,3 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117312, 0.0508171, -0.09121
 shape = SubResource("CapsuleShape3D_8y16j")
 
 [node name="Model" parent="." instance=ExtResource("3_qgjmo")]
+
+[node name="DieAudioStream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_exrcm")

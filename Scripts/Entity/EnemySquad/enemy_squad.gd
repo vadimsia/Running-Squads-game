@@ -10,5 +10,5 @@ func _ready() -> void:
 		var enemy: Enemy = enemy_assets[randi() % enemy_assets.size()].instantiate()
 		add_child(enemy)
 
-		var dir = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) * 10
+		var dir = Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) * 5
 		enemy.global_position += dir

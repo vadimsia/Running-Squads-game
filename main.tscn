@@ -52,3 +52,5 @@ fov = 50.0
 script = ExtResource("6_3rgp7")
 
 [node name="ObstructionsPool" type="Node3D" parent="."]
+
+[node name="VFXPool" type="Node3D" parent="."]

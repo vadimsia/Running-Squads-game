@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw7rdbc74l0it"]
+
+[ext_resource type="Shader" uid="uid://jeth5qs6802t" path="res://VFX/Trail/BarrelShot.tres" id="1_sk5mh"]
+[ext_resource type="Texture2D" uid="uid://b46ooaoh8w5uo" path="res://VFX/Trail/Trail.png" id="2_juci6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh15x"]
+render_priority = 0
+shader = ExtResource("1_sk5mh")
+shader_parameter/MainTexSpeed = Vector2(-1, 5)
+shader_parameter/MainTexPower = 1.0
+shader_parameter/MainTex = ExtResource("2_juci6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d3crc"]
+gravity = Vector3(0, 0, 0)
+color = Color(6.72, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fnugt"]
+top_radius = 0.01
+bottom_radius = 0.1
+
+[node name="TrailAdd" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_uh15x")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_d3crc")
+draw_pass_1 = SubResource("CylinderMesh_fnugt")

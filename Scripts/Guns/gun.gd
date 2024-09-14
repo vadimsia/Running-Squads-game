@@ -2,8 +2,10 @@ class_name Gun extends Node3D
 
 @onready var barrel: Node3D = $Barrel
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var audio_player: AudioStreamPlayer3D = $ShootAudioPlayer
 
 @export var bullet_scene: PackedScene
+@export var shoot_audio: AudioStream
 @export var spread: float = 0.1
 @export var initial_rotation: Vector3
 
@@ -28,6 +30,7 @@ func _on_shoot_timeout() -> void:
 	bullet_pool.add_child(bullet)
 	bullet.global_position = barrel.global_position
 	bullet.linear_velocity += Vector3(spread_rand(), spread_rand(), spread_rand())
+	audio_player.play()
 
 
 func _process(_delta: float) -> void:

@@ -1,6 +1,9 @@
 class_name Entity extends RigidBody3D
 
 @export var health = 20
+@export var hit_effect: PackedScene
+
+@onready var vfx_pool: Node3D = get_node("/root/Main/VFXPool")
 
 signal health_changed(old_value, new_value)
 
@@ -23,6 +26,13 @@ func _on_body_entered(body: Node) -> void:
 	var old_health = health
 	health -= body.damage
 	health_changed.emit(old_health, health)
+
+	var effect: GPUParticles3D = hit_effect.instantiate()
+	vfx_pool.add_child(effect)
+	effect.global_position = body.global_position
+	effect.emitting = true
+	effect.finished.connect(effect.queue_free)
+
 	body.queue_free()
 
 

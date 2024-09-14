@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var first_child: Road = roads_node.get_child(0)
+	print(first_child.position.z)
 	if first_child.position.z - Road.ROAD_SIZE / 2 > camera.position.z:
 		first_child.queue_free()
 		spawn_roads(1)

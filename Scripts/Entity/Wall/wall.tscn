@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1qgx3q6dfwog"]
+[gd_scene load_steps=7 format=3 uid="uid://c1qgx3q6dfwog"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/Wall/wall.gd" id="1_a0f4u"]
+[ext_resource type="PackedScene" uid="uid://24ojhmfop03l" path="res://VFX/Explosion/WallHit.tscn" id="2_um0vm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i1vs5"]
 
@@ -24,6 +25,7 @@ axis_lock_angular_z = true
 contact_monitor = true
 max_contacts_reported = 50
 script = ExtResource("1_a0f4u")
+hit_effect = ExtResource("2_um0vm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)

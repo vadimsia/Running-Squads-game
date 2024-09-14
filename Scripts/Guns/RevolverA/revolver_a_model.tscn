@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://tvy14k8lrlst"]
+
+[ext_resource type="PackedScene" uid="uid://cetkh75iq5ucj" path="res://Scripts/Guns/RevolverA/Revolver-A.fbx" id="1_05k3i"]
+
+[node name="Revolver-A" instance=ExtResource("1_05k3i")]

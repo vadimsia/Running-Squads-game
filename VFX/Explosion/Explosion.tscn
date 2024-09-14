@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://rvg5h25qogt4"]
+
+[ext_resource type="Texture2D" uid="uid://cf4utddqf1y8s" path="res://VFX/Explosion/Flare00.PNG" id="1_ja502"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5x6h"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(6.183, 2.151, 0, 1)
+albedo_texture = ExtResource("1_ja502")
+heightmap_scale = -0.69
+point_size = 9.0
+
+[sub_resource type="Curve" id="Curve_nh72v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4crl4"]
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_e3ixr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_rdelu"]
+curve_x = SubResource("Curve_nh72v")
+curve_y = SubResource("Curve_4crl4")
+curve_z = SubResource("Curve_e3ixr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e57u5"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 10.862
+initial_velocity_min = 20.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, -20, 0)
+scale_min = 0.15
+scale_max = 0.5
+scale_curve = SubResource("CurveXYZTexture_rdelu")
+color = Color(5.377, 2, 0.269, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qf0ow"]
+
+[node name="Explosion" type="GPUParticles3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p5x6h")
+amount = 20
+lifetime = 0.6
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_e57u5")
+draw_pass_1 = SubResource("QuadMesh_qf0ow")

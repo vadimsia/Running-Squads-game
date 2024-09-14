@@ -8,6 +8,7 @@ height = 0.0736174
 radius = 0.0316192
 
 [node name="TommyGunBullet" type="RigidBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 8
 collision_mask = 36
 mass = 0.01

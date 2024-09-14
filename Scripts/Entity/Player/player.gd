@@ -6,6 +6,7 @@ var gun_attachment: Node3D
 
 @onready var player_pool: PlayerSquad = get_parent()
 @onready var anim_tree: AnimationTree = get_node("Model/AnimationTree")
+@onready var die_audio_stream: AudioStreamPlayer3D = $DieAudioStream
 @onready var model: Node3D = get_node("Model")
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
@@ -43,8 +44,8 @@ func _on_health_changed(_old_value: int, new_value: int) -> void:
 
 		get_actual_gun().stop_shooting()
 		speed = 0
-		
-		# queue_free()
+
+		die_audio_stream.play()
 		
 
 func _physics_process(delta: float) -> void:
