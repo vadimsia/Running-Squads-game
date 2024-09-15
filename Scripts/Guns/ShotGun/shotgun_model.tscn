@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://q806p8xi7cqj"]
+
+[ext_resource type="PackedScene" uid="uid://c7kpg43x3u03n" path="res://Scripts/Guns/ShotGun/PTSK.fbx" id="1_mirsf"]
+
+[node name="ShotgunModel" instance=ExtResource("1_mirsf")]
+
+[node name="Carabine" parent="." index="0"]
+transform = Transform3D(1.50996e-06, -22, -8.74228e-07, 0, -9.61651e-07, 20, -20, -1.66095e-06, -6.60024e-14, 0, 0, 0)

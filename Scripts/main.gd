@@ -4,6 +4,7 @@ class_name Main extends Node
 @onready var road_scene = preload("res://Scripts/Level/Road/road.tscn")
 @onready var roads_node = $Roads
 @onready var camera: Camera3D = $Camera3D
+@onready var score_label: Label = $ScoreLabel
 
 
 func spawn_roads(amount: int) -> void:
@@ -25,7 +26,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var first_child: Road = roads_node.get_child(0)
-	print(first_child.position.z)
+	score_label.text = "Score: " + str(abs(first_child.position.z))
 	if first_child.position.z - Road.ROAD_SIZE / 2 > camera.position.z:
 		first_child.queue_free()
 		spawn_roads(1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cefa5ccjeceed"]
+[gd_scene load_steps=12 format=3 uid="uid://cefa5ccjeceed"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_jjg4r"]
 [ext_resource type="PackedScene" uid="uid://cxl0xtwjna70a" path="res://Scripts/Level/Road/road.tscn" id="2_wubep"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Guns/bullet_pool.gd" id="4_rblaf"]
 [ext_resource type="PackedScene" uid="uid://bn48nvlgy3yap" path="res://Scripts/Entity/Player/player.tscn" id="5_4al7x"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="6_3rgp7"]
+[ext_resource type="AudioStream" uid="uid://byrdpiui5ntrt" path="res://Audio/MainTheme.wav" id="7_m4bdn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k7qao"]
 
@@ -14,12 +15,16 @@ sky_material = SubResource("ProceduralSkyMaterial_k7qao")
 
 [sub_resource type="Environment" id="Environment_7m8mv"]
 background_mode = 2
+background_energy_multiplier = 0.15
 sky = SubResource("Sky_gr10j")
 fog_light_energy = 0.59
 volumetric_fog_density = 0.0436
 volumetric_fog_emission_energy = 0.0
 volumetric_fog_anisotropy = -0.69
 volumetric_fog_length = 70.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a36r8"]
+font_size = 48
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jjg4r")
@@ -29,6 +34,7 @@ environment = SubResource("Environment_7m8mv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.317273, 0.948334, 0, -0.948334, 0.317273, 0.378987, 8.16592, -0.160277)
+visible = false
 shadow_enabled = true
 
 [node name="Roads" type="Node3D" parent="."]
@@ -54,3 +60,15 @@ script = ExtResource("6_3rgp7")
 [node name="ObstructionsPool" type="Node3D" parent="."]
 
 [node name="VFXPool" type="Node3D" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 34.0
+offset_right = 182.0
+offset_bottom = 101.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_a36r8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_m4bdn")
+autoplay = true

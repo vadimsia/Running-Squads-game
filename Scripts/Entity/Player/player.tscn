@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bn48nvlgy3yap"]
 
 [ext_resource type="Script" path="res://Scripts/Entity/Player/player.gd" id="1_uu8hw"]
+[ext_resource type="PackedScene" uid="uid://dci7ejugnp6xr" path="res://Scripts/Guns/RevolverA/Revolver.tscn" id="2_iwh18"]
 [ext_resource type="PackedScene" uid="uid://bawetmoigve4a" path="res://Scripts/Entity/Player/Player1/player_1.tscn" id="3_qgjmo"]
-[ext_resource type="PackedScene" uid="uid://vy5sy17mt0wr" path="res://Scripts/Guns/SMG/TommyGun.tscn" id="3_vju6g"]
 [ext_resource type="AudioStream" uid="uid://wwivbhobcec8" path="res://Scripts/Entity/Player/Player1/Player1DieSound.wav" id="4_exrcm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8y16j"]
@@ -19,7 +19,7 @@ mass = 5.0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_uu8hw")
-initial_gun = ExtResource("3_vju6g")
+initial_gun = ExtResource("2_iwh18")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117312, 0.0508171, -0.0912109)

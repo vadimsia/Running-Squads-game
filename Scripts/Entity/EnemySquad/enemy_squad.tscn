@@ -5,6 +5,6 @@
 
 [node name="EnemySquad" type="Node3D"]
 script = ExtResource("1_4jpga")
-min_squad = 2
-max_squad = 7
+min_squad = 4
+max_squad = 10
 enemy_assets = Array[PackedScene]([ExtResource("2_xb58w")])

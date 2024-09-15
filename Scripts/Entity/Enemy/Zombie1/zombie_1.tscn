@@ -16,7 +16,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 contact_monitor = true
-max_contacts_reported = 10
+max_contacts_reported = 20
 script = ExtResource("1_bg6bk")
 damage = 20
 hit_effect = ExtResource("2_mrtca")
@@ -27,5 +27,5 @@ shape = SubResource("CapsuleShape3D_oxrb8")
 [node name="Model" parent="." instance=ExtResource("2_kjl71")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1, -0.038)
 
-[node name="DieAudioStream" type="AudioStreamPlayer3D" parent="."]
+[node name="DieAudioStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bjr8k")

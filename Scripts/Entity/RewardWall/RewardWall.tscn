@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://c51fgminneom"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/RewardWall/reward_wall.gd" id="1_1rksl"]
+[ext_resource type="PackedScene" uid="uid://24ojhmfop03l" path="res://VFX/Explosion/WallHit.tscn" id="2_plwye"]
+[ext_resource type="PackedScene" uid="uid://vy5sy17mt0wr" path="res://Scripts/Guns/TommyGun/TommyGun.tscn" id="2_wotd1"]
+[ext_resource type="PackedScene" uid="uid://dci7ejugnp6xr" path="res://Scripts/Guns/RevolverA/Revolver.tscn" id="3_1yqhp"]
+[ext_resource type="PackedScene" uid="uid://ba0f603t6af8s" path="res://Scripts/Guns/ShotGun/ShotGun.tscn" id="4_ekidi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpcw2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omtfm"]
+transparency = 1
+albedo_color = Color(0.927493, 0.742515, 0.501168, 0.435294)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vq4c8"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_65ifw"]
+subpixel_positioning = 0
+
+[sub_resource type="Animation" id="Animation_h8vpb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reward:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_3gebe"]
+resource_name = "RewardBounce"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reward:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(2, 2, 2), Vector3(3, 3, 3), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cf83b"]
+_data = {
+"RESET": SubResource("Animation_h8vpb"),
+"RewardBounce": SubResource("Animation_3gebe")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pj6j8"]
+animation = &"RewardBounce"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_diyvt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ldqtc"]
+states/RewardBounce/node = SubResource("AnimationNodeAnimation_pj6j8")
+states/RewardBounce/position = Vector2(434.5, 101)
+transitions = ["Start", "RewardBounce", SubResource("AnimationNodeStateMachineTransition_diyvt")]
+
+[node name="RewardWall" type="RigidBody3D"]
+collision_layer = 32
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_1rksl")
+rewards = Array[PackedScene]([ExtResource("2_wotd1"), ExtResource("3_1yqhp"), ExtResource("4_ekidi")])
+hit_effect = ExtResource("2_plwye")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_gpcw2")
+surface_material_override/0 = SubResource("StandardMaterial3D_omtfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vq4c8")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51)
+text = "5"
+font = SubResource("SystemFont_65ifw")
+font_size = 512
+
+[node name="Reward" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cf83b")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_ldqtc")
+anim_player = NodePath("../AnimationPlayer")

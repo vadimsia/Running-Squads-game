@@ -1,5 +1,7 @@
 class_name Multiplier extends Entity
 
+const STRONG_COEF = 1.5
+
 @onready var health_label: Label3D = $HealthLabel
 @onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var player_squad: PlayerSquad = get_node("/root/Main/PlayerPool")
@@ -13,7 +15,7 @@ func get_multiplier() -> int:
 		return 0
 	
 
-	return -health / (first_player.health * player_squad.get_child_count())
+	return -health / (first_player.health * player_squad.get_child_count() * STRONG_COEF)
 
 
 func _ready() -> void:

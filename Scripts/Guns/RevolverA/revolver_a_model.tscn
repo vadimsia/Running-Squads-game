@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cetkh75iq5ucj" path="res://Scripts/Guns/RevolverA/Revolver-A.fbx" id="1_05k3i"]
 
 [node name="Revolver-A" instance=ExtResource("1_05k3i")]
+
+[node name="BigIron" parent="." index="0"]
+transform = Transform3D(1.81195e-06, -24, -1.04907e-06, 0, -1.04907e-06, 24, -24, -1.81195e-06, -7.92028e-14, 0, 0, 0)

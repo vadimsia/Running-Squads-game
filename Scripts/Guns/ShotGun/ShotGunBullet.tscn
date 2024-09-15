@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://re8aq0m6gt38"]
+
+[ext_resource type="Script" path="res://Scripts/Guns/bullet.gd" id="1_yo4m6"]
+[ext_resource type="PackedScene" uid="uid://kvivl1yy86dk" path="res://Scripts/Ammo/Bullets/blt_45ac_pfbx.tscn" id="2_r3a2g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mespq"]
+height = 0.0736174
+radius = 0.0316192
+
+[node name="ShotGunBullet" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 36
+script = ExtResource("1_yo4m6")
+damage = 3
+speed = 40
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mespq")
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="BLT-45ACPfbx" parent="." instance=ExtResource("2_r3a2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0340549)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dci7ejugnp6xr"]
+
+[ext_resource type="Script" path="res://Scripts/Guns/gun.gd" id="1_0wx74"]
+[ext_resource type="PackedScene" uid="uid://tvy14k8lrlst" path="res://Scripts/Guns/RevolverA/revolver_a_model.tscn" id="2_40xjj"]
+[ext_resource type="PackedScene" uid="uid://dg441lpgwqwia" path="res://Scripts/Guns/RevolverA/RevolverBullet.tscn" id="2_ruggm"]
+[ext_resource type="PackedScene" uid="uid://rvg5h25qogt4" path="res://VFX/Explosion/Explosion.tscn" id="3_acb10"]
+[ext_resource type="AudioStream" uid="uid://dfnannt0sqe1m" path="res://Scripts/Guns/RevolverA/RevolverShot.wav" id="5_cckqd"]
+
+[node name="Revolver" type="Node3D"]
+script = ExtResource("1_0wx74")
+bullet_scene = ExtResource("2_ruggm")
+initial_rotation = Vector3(90, -180, 0)
+
+[node name="Model" parent="." instance=ExtResource("2_40xjj")]
+
+[node name="Barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100484, -0.521417)
+
+[node name="Explosion" parent="Barrel" instance=ExtResource("3_acb10")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.0487886)
+lifetime = 0.5
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cckqd")
+volume_db = -10.0
+max_polyphony = 5
+playback_type = 1

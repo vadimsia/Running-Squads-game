@@ -4,7 +4,7 @@ class_name Enemy extends Entity
 @export var speed = 20
 
 @onready var player_squad: PlayerSquad = get_node("/root/Main/PlayerPool")
-@onready var die_audio_stream: AudioStreamPlayer3D = $DieAudioStream
+@onready var die_audio_stream: AudioStreamPlayer = $DieAudioStream
 @onready var anim_tree: AnimationTree = get_node("Model/AnimationTree")
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
