@@ -13,6 +13,9 @@ func spawn_players(amount: int) -> void:
 		var player: Player = current_player_asset.instantiate()
 		add_child(player)
 
+		if not alive_player:
+			continue
+
 		var dir = Vector3(randf_range(-1, 1), 0, randf_range(-0.5, 0.5)) * 5
 		player.global_position = alive_player.global_position + dir
 
@@ -24,6 +27,11 @@ func remove_players(amount: int) -> void:
 			return
 		
 		player.take_damage(player.health)
+
+
+func clear_pool() -> void:
+	for player in get_children():
+		player.queue_free()
 
 
 func get_alive_player() -> Player:
