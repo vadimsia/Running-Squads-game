@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cefa5ccjeceed"]
+[gd_scene load_steps=13 format=3 uid="uid://cefa5ccjeceed"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_jjg4r"]
 [ext_resource type="PackedScene" uid="uid://cxl0xtwjna70a" path="res://Scripts/Level/Road/road.tscn" id="2_wubep"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bn48nvlgy3yap" path="res://Scripts/Entity/Player/player.tscn" id="5_4al7x"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="6_3rgp7"]
 [ext_resource type="AudioStream" uid="uid://byrdpiui5ntrt" path="res://Audio/MainTheme.wav" id="7_m4bdn"]
+[ext_resource type="Script" path="res://Scripts/Entity/Player/player_squad_gun_sound.gd" id="8_4c8rt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k7qao"]
 
@@ -67,7 +68,7 @@ offset_bottom = 101.0
 text = "Score:"
 label_settings = SubResource("LabelSettings_a36r8")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_m4bdn")
 volume_db = -5.0
 autoplay = true
@@ -87,3 +88,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RESTART"
+
+[node name="PlayerSquadGunSound" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+max_polyphony = 10
+script = ExtResource("8_4c8rt")

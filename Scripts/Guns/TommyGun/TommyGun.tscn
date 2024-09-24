@@ -10,7 +10,9 @@
 script = ExtResource("1_vvu5m")
 bullet_scene = ExtResource("2_fiyja")
 spread = 0.4
+shoot_interval = 0.2
 initial_rotation = Vector3(90, -180, 0)
+sound = ExtResource("3_lhhdb")
 
 [node name="Model" parent="." instance=ExtResource("1_d8u3e")]
 
@@ -24,9 +26,3 @@ lifetime = 0.2
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
-
-[node name="ShootAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_lhhdb")
-volume_db = -10.0
-max_polyphony = 5
-playback_type = 1

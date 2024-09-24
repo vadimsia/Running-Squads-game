@@ -20,6 +20,15 @@ config/icon="res://icon.svg"
 movie_writer/movie_file="/Users/ynggstr/Контент/проекты/GodotGame1/gameplay.avi"
 movie_writer/fps=30
 
+[file_customization]
+
+folder_colors={
+"res://Audio/": "red",
+"res://Scripts/": "orange",
+"res://VFX/": "yellow",
+"res://VFX/Explosion/": "yellow"
+}
+
 [layer_names]
 
 3d_physics/layer_1="road"

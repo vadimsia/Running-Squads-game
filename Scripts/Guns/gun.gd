@@ -2,12 +2,13 @@ class_name Gun extends Node3D
 
 @onready var barrel: Node3D = $Barrel
 @onready var shoot_timer: Timer = $ShootTimer
-@onready var audio_player: AudioStreamPlayer = $ShootAudioPlayer
 
 @export var bullet_scene: PackedScene
 @export var spread: float = 0.1
+@export var shoot_interval = 0.1
 @export var initial_rotation: Vector3
 @export var bullets_amount = 1
+@export var sound: AudioStream
 
 var bullet_pool: BulletPool
 
@@ -15,6 +16,7 @@ var bullet_pool: BulletPool
 func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timeout)
 	bullet_pool = get_node("/root/Main/BulletPool")
+	shoot_timer.wait_time = shoot_interval
 
 
 func spread_rand() -> float:
@@ -27,7 +29,6 @@ func stop_shooting() -> void:
 
 
 func _on_shoot_timeout() -> void:
-	audio_player.play()
 	for i in range(0, bullets_amount):
 		var bullet: Bullet = bullet_scene.instantiate() 
 		bullet_pool.add_child(bullet)
